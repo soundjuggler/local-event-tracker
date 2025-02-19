@@ -1,6 +1,6 @@
 # Local Event Tracker
 
-A simple web application to **view, add, and update** social events in the local area.
+A simple web application to view, add, and update social events in the local area.
 
 ## Features
 - View upcoming events
