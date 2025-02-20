@@ -3,11 +3,10 @@
 A simple web application to view, add, and update social events in the local area.
 
 ## Features
-- View upcoming events
-- Add new events
-- Update event details
-- Remove past events automatically
-
+- Basic Page Viewing
+- Template Page Work
+- Working Server Side Hosting
+  
 ## Technologies Used
 - **Frontend:** HTML, CSS, JavaScript
 - **Backend:** Node.js, Express.js
