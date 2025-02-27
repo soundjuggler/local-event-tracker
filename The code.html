@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .calendar {
+            width: 320px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .day {
+            padding: 10px;
+            background: #e3e3e3;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .day:hover {
+            background: #d1d1d1;
+        }
+        .today {
+            background: #ffcc00 !important;
+            font-weight: bold;
+        }
+        #note-section {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar">
+        <div class="calendar-header">
+            <button onclick="prevMonth()">&#9665;</button>
+            <h2 id="month-year"></h2>
+            <button onclick="nextMonth()">&#9655;</button>
+        </div>
+        <div class="days" id="calendar-days"></div>
+        <div id="note-section">
+            <h3 id="selected-date"></h3>
+            <textarea id="note" placeholder="Add a note..." rows="3"></textarea>
+            <button onclick="saveNote()">Save Note</button>
+        </div>
+    </div>
+    
+    <script>
+        const monthYear = document.getElementById("month-year");
+        const daysContainer = document.getElementById("calendar-days");
+        const selectedDateText = document.getElementById("selected-date");
+        const noteInput = document.getElementById("note");
+        let currentDate = new Date();
+        let selectedDate = null;
+
+        function renderCalendar(date) {
+            daysContainer.innerHTML = "";
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            monthYear.innerText = date.toLocaleString("default", { month: "long", year: "numeric" });
+            
+            const firstDay = new Date(year, month, 1).getDay();
+            const lastDate = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            
+            for (let i = 0; i < firstDay; i++) {
+                let emptyDiv = document.createElement("div");
+                daysContainer.appendChild(emptyDiv);
+            }
+
+            for (let day = 1; day <= lastDate; day++) {
+                let dayDiv = document.createElement("div");
+                dayDiv.classList.add("day");
+                dayDiv.innerText = day;
+                dayDiv.onclick = () => selectDate(year, month, day);
+                
+                if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+                    dayDiv.classList.add("today");
+                }
+                daysContainer.appendChild(dayDiv);
+            }
+        }
+        
+        function prevMonth() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar(currentDate);
+        }
+        
+        function nextMonth() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar(currentDate);
+        }
+
+        function selectDate(year, month, day) {
+            selectedDate = `${year}-${month + 1}-${day}`;
+            selectedDateText.innerText = `Selected Date: ${selectedDate}`;
+            noteInput.value = localStorage.getItem(selectedDate) || "";
+        }
+
+        function saveNote() {
+            if (selectedDate) {
+                localStorage.setItem(selectedDate, noteInput.value);
+                alert("Note saved!");
+            } else {
+                alert("Please select a date first.");
+            }
+        }
+        
+        renderCalendar(currentDate);
+    </script>
+</body>
+</html>
