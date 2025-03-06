@@ -1,0 +1,51 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/events">Events</a> |
+        <a href="/about">About</a>
+    </nav>
+    <p>temp temp temp temp</p>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" style="color: white; margin-right: 20px;">Home</a>
+        <a href="request.html" style="color: white; margin-right: 20px;">Request Event</a>
+        <a href="admin.html" style="color: white;">Admin Panel</a>
+    </div>
+    <div class="container">
+        <h2>Admin Panel - Manage Events</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="eventTable"></tbody>
+        </table>
+        <button onclick="logout()">Logout</button>
+    </div>
+</body>
+</html>

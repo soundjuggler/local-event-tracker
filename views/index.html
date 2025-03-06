@@ -4,15 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local Event Tracker</title>
+    <!-- Fonts, CSS and Images-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- STYLESHEET-->
     <link rel="stylesheet" href="/css/style.css">
+    <!-- Full Calendar JS Implentation-->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+    <!--IMAGES-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
 </head>
 <body>
-    <h1>Welcome to the Local Event Tracker</h1>
+    <section class="header">
+    <!---- NAVBAR ---->
     <nav>
-        <a href="/">Home</a> |
-        <a href="/events">Events</a> |
-        <a href="/about">About</a>
+        <div class="navbar-title">
+            <h1>LOCAL</h1>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/request">REQUEST</a></li>
+                <li><a href="/logIn">LOG IN</a></li>
+            </ul>
+        </div>
     </nav>
-    <p>Find and track events happening in your local area.</p>
+
+
+        <!---- OPENING TEXT BOX ---->
+        <div class="text-box">
+            <h1>LOCAL‎ ‎ ‎ ‎ ‎ ‎ </h1>
+            <p>idkidkidkidkidkidkidkidkidkidkidkidkidkidkidkidk</p>
+            <a href="/request" class="form-btn">REQUEST HERE</a>
+        </div>
+    </section>
+    
+        <div id="calendar"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: '/events',
+            });
+            calendar.render();
+        });
+    </script>
+        
+        <!---- FOOTER ---->
+		<section class="footer">
+			<h4>Information</h4>
+			<!---- ICONS WITH LINKS TO OUR LINKEDIN'S-->
+			<div class="icons">
+				<a href="https://github.com/soundjuggler/local-event-tracker">
+                    <i class="fa-brands fa-github"></i><p>Github Repo</p>
+                </a>                
+			</div>		
+			<p>Made by ...</p>
+		</section>
 </body>
 </html>
+

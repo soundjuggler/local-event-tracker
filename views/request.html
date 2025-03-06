@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+    <style>#calendar { width: 80%; margin: auto; height: 500px; margin-top: 50px; text-align: center; padding: 50px; }</style>
+</head>
+<body>
+    <h1>Upcoming Events</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/events">Events</a> |
+        <a href="/about">Admin</a>
+    </nav>
+    <p>Here you'll see a list of all upcoming events.</p>
+
+</head>
+<body>
+
+    <div id="calendar"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: '/events',
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
